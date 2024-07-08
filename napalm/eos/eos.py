@@ -764,6 +764,18 @@ class EOSDriver(NetworkDriver):
             lines.pop(0)
             v4_stats = re.match(self._RE_BGP_PREFIX, lines.pop(0))
             v6_stats = re.match(self._RE_BGP_PREFIX, lines.pop(0))
+
+            # If RPKI validation is enabled, some versions of EOS report
+            # these values seperately, and they match RE_BGP_PREFIX and
+            # the NEIGHBOR_FILTER.
+            # However, changing those filters/regexes doesn't make sense
+            # because that would break backwards compatibility (EOS
+            # varies the number of fields in the lines that match
+            # RE_BGP_PREFIX nromally).  So we'll just strip out the RPKI
+            # lines.
+            while re.match(self._RE_BGP_PREFIX, lines[0]):
+                lines.pop(0)
+
             local_as = re.match(self._RE_BGP_LOCAL, lines.pop(0))
             data = {
                 "remote_as": napalm.base.helpers.as_number(neighbor_info.group("as")),

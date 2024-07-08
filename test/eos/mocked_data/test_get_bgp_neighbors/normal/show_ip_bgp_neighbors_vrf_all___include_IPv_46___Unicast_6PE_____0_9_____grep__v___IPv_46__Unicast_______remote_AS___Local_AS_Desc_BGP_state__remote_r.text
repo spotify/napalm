@@ -9,4 +9,6 @@ BGP neighbor is 192.168.56.4, remote AS 65001, external link
   BGP state is Established, up for   32d16h
     IPv4 Unicast:           0         0
     IPv6 Unicast:           0         0
+    IPv4 Unicast:        200000             1        200000
+    IPv6 Unicast:             0             0             0
 Local AS is 65002, local router ID 192.168.56.2
