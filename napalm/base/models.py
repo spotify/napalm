@@ -188,8 +188,8 @@ BGPConfigNeighborDict = TypedDict(
     },
 )
 
-BGPStateAdressFamilyDict = TypedDict(
-    "BGPStateAdressFamilyDict",
+BGPStateAddressFamilyDict = TypedDict(
+    "BGPStateAddressFamilyDict",
     {"received_prefixes": int, "accepted_prefixes": int, "sent_prefixes": int},
 )
 
@@ -203,7 +203,7 @@ BGPStateNeighborDict = TypedDict(
         "is_enabled": bool,
         "description": str,
         "uptime": int,
-        "address_family": Dict[str, BGPStateAdressFamilyDict],
+        "address_family": Dict[str, BGPStateAddressFamilyDict],
     },
 )
 
