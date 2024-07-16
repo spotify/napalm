@@ -751,7 +751,8 @@ class EOSDriver(NetworkDriver):
                     vrf_data["routerId"]
                 )
 
-        bgp_counters["global"] = bgp_counters.pop("default")
+        if "default" in bgp_counters:
+            bgp_counters["global"] = bgp_counters.pop("default")
         return dict(bgp_counters)
 
     def get_environment(self):
