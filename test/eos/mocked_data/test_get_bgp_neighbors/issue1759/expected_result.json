@@ -1,0 +1,70 @@
+{
+  "global": {
+    "peers": {
+      "fe80::a8c1:abff:fe94:4171%Et3": {
+        "local_as": 4259973120,
+        "remote_as": 4259906564,
+        "remote_id": "172.18.4.4",
+        "is_up": true,
+        "is_enabled": true,
+        "description": "",
+        "uptime": 9,
+        "address_family": {
+          "ipv4": {
+            "received_prefixes": 3,
+            "accepted_prefixes": 3,
+            "sent_prefixes": 9
+          },
+          "ipv6": {
+            "received_prefixes": 3,
+            "accepted_prefixes": 3,
+            "sent_prefixes": 9
+          }
+        }
+      },
+      "fe80::a8c1:abff:fea1:b618%Et2": {
+        "local_as": 4259973120,
+        "remote_as": 4259906563,
+        "remote_id": "172.18.4.3",
+        "is_up": true,
+        "is_enabled": true,
+        "description": "",
+        "uptime": 9,
+        "address_family": {
+          "ipv4": {
+            "received_prefixes": 5,
+            "accepted_prefixes": 5,
+            "sent_prefixes": 8
+          },
+          "ipv6": {
+            "received_prefixes": 5,
+            "accepted_prefixes": 5,
+            "sent_prefixes": 8
+          }
+        }
+      },
+      "fe80::a8c1:abff:fedc:fb58%Et1": {
+        "local_as": 4259973120,
+        "remote_as": 4259906562,
+        "remote_id": "172.18.4.2",
+        "is_up": true,
+        "is_enabled": true,
+        "description": "",
+        "uptime": 9,
+        "address_family": {
+          "ipv4": {
+            "received_prefixes": 6,
+            "accepted_prefixes": 6,
+            "sent_prefixes": 5
+          },
+          "ipv6": {
+            "received_prefixes": 6,
+            "accepted_prefixes": 6,
+            "sent_prefixes": 5
+          }
+        }
+      }
+    },
+    "router_id": "172.18.8.0"
+  }
+}
