@@ -686,9 +686,9 @@ class EOSDriver(NetworkDriver):
 
         bgp_counters = defaultdict(
             lambda: models.BGPStateNeighborsPerVRFDict(
-                peers=models.BGPStateNeighborDict()
-            )
-        )
+                peers=models.BGPStateNeighborDict()  # type: ignore
+            )  # type: ignore
+        )  # type: ignore
         # Iterate IPv4 and IPv6 neighbor details
         for cmd in cmd_outputs[2:]:
             for vrf_name, vrf_data in cmd["vrfs"].items():
