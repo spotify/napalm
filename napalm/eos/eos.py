@@ -729,7 +729,6 @@ class EOSDriver(NetworkDriver):
                         ),
                         "sent_prefixes": peer["v6PrefixesSent"],
                     }
-                    vrf["router_id"] = napalm.base.helpers.ip(peer["localRouterId"])
                     peer_data: models.BGPStateNeighborDict = {
                         "local_as": local_as,
                         "remote_as": remote_as,
@@ -744,6 +743,14 @@ class EOSDriver(NetworkDriver):
                         },
                     }
                     vrf["peers"][peer_ip] = peer_data
+
+        # Iterate IPv4 and IPv6 summary details for router-id assignment
+        for cmd in cmd_outputs[:2]:
+            for vrf_name, vrf_data in cmd["vrfs"].items():
+                bgp_counters[vrf_name]["router_id"] = napalm.base.helpers.ip(
+                    vrf_data["routerId"]
+                )
+
         bgp_counters["global"] = bgp_counters.pop("default")
         return dict(bgp_counters)
 
