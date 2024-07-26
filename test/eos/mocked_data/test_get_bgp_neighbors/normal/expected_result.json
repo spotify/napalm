@@ -8,7 +8,7 @@
         "is_up": true,
         "is_enabled": true,
         "description": "",
-        "uptime": "...",
+        "uptime": 121,
         "address_family": {
           "ipv4": {
             "received_prefixes": 3,
@@ -29,7 +29,7 @@
         "is_up": false,
         "is_enabled": true,
         "description": "",
-        "uptime": "...",
+        "uptime": -1,
         "address_family": {
           "ipv4": {
             "received_prefixes": 0,
@@ -50,7 +50,7 @@
         "is_up": true,
         "is_enabled": true,
         "description": "",
-        "uptime": "...",
+        "uptime": 165,
         "address_family": {
           "ipv4": {
             "received_prefixes": 0,
@@ -71,7 +71,7 @@
         "is_up": true,
         "is_enabled": true,
         "description": "",
-        "uptime": "...",
+        "uptime": 165,
         "address_family": {
           "ipv4": {
             "received_prefixes": 0,
