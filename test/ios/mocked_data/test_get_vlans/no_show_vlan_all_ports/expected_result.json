@@ -218,10 +218,6 @@
     "name": "Vlan1005",
     "interfaces": []
   },
-  "2400": {
-    "name": "Vlan2400",
-    "interfaces": []
-  },
   "2432": {
     "name": "Vlan2432",
     "interfaces": [
