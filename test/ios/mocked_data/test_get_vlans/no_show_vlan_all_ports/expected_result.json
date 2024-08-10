@@ -220,9 +220,7 @@
   },
   "2400": {
     "name": "Vlan2400",
-    "interfaces": [
-      "Port-channel1"
-    ]
+    "interfaces": []
   },
   "2432": {
     "name": "Vlan2432",
@@ -234,8 +232,8 @@
   "2433": {
     "name": "Vlan2433",
     "interfaces": [
-      "GigabitEthernet0/3",
-      "GigabitEthernet0/4"
+      "GigabitEthernet0/1",
+      "GigabitEthernet0/3"
     ]
   }
 }

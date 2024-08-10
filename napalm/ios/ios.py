@@ -3751,7 +3751,7 @@ class IOSDriver(NetworkDriver):
         )
         continuation_regexp = re.compile(r"^\s+([A-Z][a-z].*)$")
         match_pvlan_regexp = re.compile(
-            r"^(\d+)\s+(\S+)\s+(community|isolated)?\s+\S+(\s+[A-Z][a-z].*)?$"
+            r"^(\d+)\s+(\S+)\s+(community|isolated)?\s+(\s+[A-Z][a-z].*)?$"
         )
         output = output.splitlines()
         vlans = {}
@@ -3762,33 +3762,19 @@ class IOSDriver(NetworkDriver):
         interfaces = ""
         for line in output:
             vlan_m = find_regexp.match(line)
+            p_vlan_m = match_pvlan_regexp.match(line)
             if vlan_m:
-                p_vlan_m = match_pvlan_regexp.match(line)
-                if p_vlan_m:
-                    was_vlan_or_cont = True
-                    vlan_name = vlan_m.group(2)
-                    if (
-                        vlan_name == p_vlan_m.group(2)
-                        and p_vlan_m.group(3) in ["community", "isolated"]
-                        and vlan_name == _vlan_id
-                    ):
-                        vlan_id = p_vlan_m.group(2)
-                    elif vlan_m.group(1) != p_vlan_m.group(2) and p_vlan_m.group(3) in [
-                        "community",
-                        "isolated",
-                    ]:
-                        continue
-                    else:
-                        vlan_id = vlan_m.group(1)
-                    vlan_name = _vlan_name.strip() if _vlan_name else vlan_name.strip()
-                    interfaces = vlan_m.group(3) or ""
-                    vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
-                else:
-                    was_vlan_or_cont = True
-                    vlan_id = vlan_m.group(1)
-                    vlan_name = vlan_m.group(2).strip()
-                    interfaces = vlan_m.group(3) or ""
-                    vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
+                was_vlan_or_cont = True
+                vlan_id = vlan_m.group(1)
+                vlan_name = vlan_m.group(2).strip()
+                interfaces = vlan_m.group(3) or ""
+                vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
+            if p_vlan_m:
+                was_vlan_or_cont = True
+                vlan_id = p_vlan_m.group(2)
+                vlan_name = vlans.get(vlan_id)["name"]
+                interfaces = vlan_m.group(4) or ""
+                vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
 
             cont_m = None
             if was_vlan_or_cont:
