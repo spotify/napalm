@@ -3771,10 +3771,12 @@ class IOSDriver(NetworkDriver):
                 vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
             if p_vlan_m:
                 was_vlan_or_cont = True
+                p_vlan_id = p_vlan_m.group(1)
                 vlan_id = p_vlan_m.group(2)
                 vlan_name = vlans.get(vlan_id)["name"]
                 interfaces = p_vlan_m.group(4) or ""
                 vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
+                vlans[p_vlan_id] = {"name": vlan_name, "interfaces": []}
 
             cont_m = None
             if was_vlan_or_cont:
@@ -3797,7 +3799,7 @@ class IOSDriver(NetworkDriver):
         return vlans
 
     def _get_vlan_from_id(self):
-        command = "show vlan brief"
+        command = "show vlan"
         output = self._send_command(command)
         vlan_regexp = r"^(\d+)\W+(.*?(?=active|act\/[isl]{1}shut|act\/unsup))"
         find_vlan = re.findall(vlan_regexp, output, re.MULTILINE)

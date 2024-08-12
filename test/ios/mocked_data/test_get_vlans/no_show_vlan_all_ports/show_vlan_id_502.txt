@@ -1,10 +1,10 @@
 VLAN Name                             Status    Ports
 ---- -------------------------------- --------- -------------------------------
-2432 Vlan2432                         active
+502  VLAN0502                         active
 
 VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
 ---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
-2432 enet  102432     1500  -      -      -        -    -        0      0
+502  enet  100502     1500  -      -      -        -    -        0      0
 
 Remote SPAN VLAN
 ----------------
@@ -12,4 +12,4 @@ Disabled
 
 Primary Secondary Type              Ports
 ------- --------- ----------------- ------------------------------------------
-2400    2432      isolated          Gi0/1, Gi0/3
+500     502       isolated          Gi1/1, Gi1/3
