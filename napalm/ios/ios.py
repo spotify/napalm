@@ -3775,8 +3775,6 @@ class IOSDriver(NetworkDriver):
                 vlan_id = p_vlan_m.group(2)
                 vlan_name = vlans.get(vlan_id)["name"]
                 interfaces = p_vlan_m.group(4) or ""
-                vlans[vlan_id] = {"name": vlan_name, "interfaces": []}
-                vlans[p_vlan_id] = {"name": vlan_name, "interfaces": []}
 
             cont_m = None
             if was_vlan_or_cont:
@@ -3784,7 +3782,7 @@ class IOSDriver(NetworkDriver):
                 if cont_m:
                     interfaces = cont_m.group(1)
 
-            if not cont_m and not vlan_m:
+            if not cont_m and not (vlan_m or p_vlan_m):
                 was_vlan_or_cont = False
                 continue
 
