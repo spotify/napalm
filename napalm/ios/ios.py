@@ -3797,6 +3797,9 @@ class IOSDriver(NetworkDriver):
                     if intf.strip()
                 ]
             )
+             
+            if len(vlans).keys() > 1:
+                del(vlans[vlan_id])
 
         return vlans
 
