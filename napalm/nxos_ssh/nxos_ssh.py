@@ -484,7 +484,7 @@ class NXOSSSHDriver(NXOSDriverBase):
         Return the uptime in seconds as an integer
         """
         # Initialize to zero
-        (years, weeks, days, hours, minutes) = (0, 0, 0, 0, 0)
+        (years, weeks, days, hours, minutes, seconds) = (0, 0, 0, 0, 0, 0)
 
         uptime_str = uptime_str.strip()
         time_list = uptime_str.split(",")
