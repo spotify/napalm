@@ -168,8 +168,7 @@ def parse_intf_section(interface):
         mtu = int(speed_data["mtu"])
         speed_unit = speed_data["speed_unit"]
         speed_unit = speed_unit.rstrip(",")
-        # This was alway in Kbit (in the data I saw)
-        if speed_unit != "Kbit":
+        if speed_unit not in ["Kbit", "Kbit/sec"]:
             msg = "Unexpected speed unit in show interfaces parsing:\n\n{}".format(
                 interface
             )
@@ -484,7 +483,7 @@ class NXOSSSHDriver(NXOSDriverBase):
         Return the uptime in seconds as an integer
         """
         # Initialize to zero
-        (years, weeks, days, hours, minutes) = (0, 0, 0, 0, 0)
+        (years, weeks, days, hours, minutes, seconds) = (0, 0, 0, 0, 0, 0)
 
         uptime_str = uptime_str.strip()
         time_list = uptime_str.split(",")
