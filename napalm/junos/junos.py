@@ -2462,14 +2462,14 @@ class JunOSDriver(NetworkDriver):
             if options["format"] == "text":
                 rv["candidate"] = str(config.text)
             else:
-                return str(config["configuration"])
+                rv["candidate"] = str(config["configuration"])
         if retrieve in ("running", "all"):
             options["database"] = "committed"
             config = self.device.rpc.get_config(filter_xml=None, options=options)
             if options["format"] == "text":
                 rv["candidate"] = str(config.text)
             else:
-                return str(config["configuration"])
+                 rv["candidate"] = str(config["configuration"])
         if sanitized:
             return napalm.base.helpers.sanitize_configs(rv, sanitize_strings)
 
