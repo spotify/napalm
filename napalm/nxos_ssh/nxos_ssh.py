@@ -621,7 +621,7 @@ class NXOSSSHDriver(NXOSDriverBase):
                 _, uptime_str = line.split(" uptime is ")
                 uptime = self.parse_uptime(uptime_str)
 
-            if "system: " in line or "NXOS: " in line:
+            if "system: " in line or line.strip().startswith("NXOS: version"):
                 line = line.strip()
                 os_version = line.split()[2]
                 os_version = os_version.strip()
