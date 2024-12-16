@@ -8,7 +8,7 @@ netaddr
 pyYAML
 pyeapi>=1.0.2
 netmiko>=4.4.0
-junos-eznc>=2.7.0
+git+https://github.com/ktbyers/py-junos-eznc.git@78a1ed15e2d03722894227f48228f41b90402b80#egg=junos-eznc
 scp
 lxml>=4.3.0
 ncclient
