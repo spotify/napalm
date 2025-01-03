@@ -1687,7 +1687,7 @@ class EOSDriver(NetworkDriver):
         commands = []
 
         if vrf:
-            commands.append("routing-context vrf {vrf}".format(vrf=vrf))
+            commands.append("cli vrf {vrf}".format(vrf=vrf))
 
         if source:
             source_opt = "-s {source}".format(source=source)
@@ -2193,7 +2193,7 @@ class EOSDriver(NetworkDriver):
         commands = []
 
         if vrf:
-            commands.append("routing-context vrf {vrf}".format(vrf=vrf))
+            commands.append("cli vrf {vrf}".format(vrf=vrf))
 
         command = "ping {}".format(destination)
         command += " timeout {}".format(timeout)
