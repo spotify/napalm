@@ -427,10 +427,11 @@ class EOSDriver(NetworkDriver):
                 continue
             commands.append(line)
 
-        for start, depth in [
-            (s, d) for (s, d) in self.HEREDOC_COMMANDS if s in commands
-        ]:
-            commands = self._multiline_convert(commands, start=start, depth=depth)
+        if self.transport != "ssh":
+            for start, depth in [
+                (s, d) for (s, d) in self.HEREDOC_COMMANDS if s in commands
+            ]:
+                commands = self._multiline_convert(commands, start=start, depth=depth)
 
         commands = self._mode_comment_convert(commands)
 
