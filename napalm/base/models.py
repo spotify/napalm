@@ -223,17 +223,7 @@ IPV6NeighborDict = TypedDict(
 
 NTPPeerDict = TypedDict(
     "NTPPeerDict",
-    {
-        "address": str,
-        "port": int,
-        "version": int,
-        "association_type": str,
-        "iburst": bool,
-        "prefer": bool,
-        "network_instance": str,
-        "source_address": str,
-        "key_id": int,
-    },
+    {},
     total=False,
 )
 
