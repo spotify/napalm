@@ -1,14 +1,16 @@
 """Several methods to help with the tests."""
 
 
-def test_model(model, data):
+def test_model(model, data, allow_subset=False):
     """Return if the dictionary `data` complies with the `model`."""
     # Access the underlying schema for a TypedDict directly
     annotations = model.__annotations__
-    if model.__total__:
-        same_keys = set(annotations.keys()) == set(data.keys())
-    else:
+    if allow_subset:
         same_keys = set(data.keys()) <= set(annotations.keys())
+        source = data
+    else:
+        same_keys = set(annotations.keys()) == set(data.keys())
+        source = annotations
 
     if not same_keys:
         print(
@@ -18,7 +20,7 @@ def test_model(model, data):
         )
 
     correct_class = True
-    for key in data.keys():
+    for key in source.keys():
         correct_class = isinstance(data[key], annotations[key]) and correct_class
         if not correct_class:
             print(
