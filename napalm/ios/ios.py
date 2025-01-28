@@ -2076,7 +2076,10 @@ class IOSDriver(NetworkDriver):
         return bgp_neighbor_data
 
     def get_bgp_neighbors_detail(self, neighbor_address=""):
-        bgp_detail = defaultdict(lambda: defaultdict(lambda: []))
+        def _inner_defaultdict():
+            return defaultdict(list)
+
+        bgp_detail = defaultdict(_inner_defaultdict)
 
         raw_bgp_sum = self._send_command("show ip bgp all sum").strip()
 
